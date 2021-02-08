@@ -6,6 +6,8 @@ using DOTNET_RPG.Data;
 
 namespace DOTNET_RPG.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _iAuthRepository;
@@ -22,7 +24,7 @@ namespace DOTNET_RPG.Controllers
 
             if (!serviceResponse.Success)
             {
-                return BadRequest(Response);
+                return BadRequest(serviceResponse);
             }
             return Ok(serviceResponse);
         }
@@ -30,11 +32,11 @@ namespace DOTNET_RPG.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserRegisterDTO userRegisterDTO)
         {
-            ServiceResponse<int> serviceResponse = await _iAuthRepository.Login(userRegisterDTO.Username, userRegisterDTO.Password);
+            ServiceResponse<string> serviceResponse = await _iAuthRepository.Login(userRegisterDTO.Username, userRegisterDTO.Password);
 
             if (!serviceResponse.Success)
             {
-                return BadRequest(Response);
+                return BadRequest(serviceResponse);
             }
             return Ok(serviceResponse);
         }

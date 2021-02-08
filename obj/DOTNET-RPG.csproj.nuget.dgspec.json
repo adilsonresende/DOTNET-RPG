@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DOTNET-RPG\\DOTNET-RPG.csproj": {}
+    "d:\\DOTNET-RPG\\DOTNET-RPG.csproj": {}
   },
   "projects": {
-    "D:\\DOTNET-RPG\\DOTNET-RPG.csproj": {
+    "d:\\DOTNET-RPG\\DOTNET-RPG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DOTNET-RPG\\DOTNET-RPG.csproj",
+        "projectUniqueName": "d:\\DOTNET-RPG\\DOTNET-RPG.csproj",
         "projectName": "DOTNET-RPG",
-        "projectPath": "D:\\DOTNET-RPG\\DOTNET-RPG.csproj",
+        "projectPath": "d:\\DOTNET-RPG\\DOTNET-RPG.csproj",
         "packagesPath": "C:\\Users\\Adilson\\.nuget\\packages\\",
-        "outputPath": "D:\\DOTNET-RPG\\obj\\",
+        "outputPath": "d:\\DOTNET-RPG\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -45,6 +45,10 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
@@ -52,6 +56,14 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.8.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.8.0, )"
             }
           },
           "imports": [
