@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using DOTNET_RPG.DTOs.User;
@@ -6,6 +7,7 @@ using DOTNET_RPG.Data;
 
 namespace DOTNET_RPG.Controllers
 {
+    
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase

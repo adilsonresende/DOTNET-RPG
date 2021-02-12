@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\DOTNET-RPG\\DOTNET-RPG.csproj": {}
+    "D:\\DOTNET-RPG\\DOTNET-RPG.csproj": {}
   },
   "projects": {
-    "d:\\DOTNET-RPG\\DOTNET-RPG.csproj": {
+    "D:\\DOTNET-RPG\\DOTNET-RPG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\DOTNET-RPG\\DOTNET-RPG.csproj",
+        "projectUniqueName": "D:\\DOTNET-RPG\\DOTNET-RPG.csproj",
         "projectName": "DOTNET-RPG",
-        "projectPath": "d:\\DOTNET-RPG\\DOTNET-RPG.csproj",
+        "projectPath": "D:\\DOTNET-RPG\\DOTNET-RPG.csproj",
         "packagesPath": "C:\\Users\\Adilson\\.nuget\\packages\\",
-        "outputPath": "d:\\DOTNET-RPG\\obj\\",
+        "outputPath": "D:\\DOTNET-RPG\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -47,7 +47,7 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[5.0.2, )"
+              "version": "[3.1.3, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "target": "Package",

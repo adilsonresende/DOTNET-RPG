@@ -40,7 +40,7 @@ namespace DOTNET_RPG.Data
                 }
 
                 serviceResponse.Success = true;
-                serviceResponse.Data = user.Id.ToString();
+                serviceResponse.Data = CreateToken(user);
 
             }
             catch (Exception ex)
@@ -124,10 +124,10 @@ namespace DOTNET_RPG.Data
             };
 
             SymmetricSecurityKey systemSecurityKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_iConfiguration.GetSection("AppSettings.Token").Value)
+                Encoding.UTF8.GetBytes(_iConfiguration.GetSection("AppSettings").GetSection("Token").Value)
             );
 
-            SigningCredentials signingCredentials = new(systemSecurityKey, SecurityAlgorithms.HmacSha512Signature);
+            SigningCredentials signingCredentials = new SigningCredentials(systemSecurityKey, SecurityAlgorithms.HmacSha512Signature);
 
             SecurityTokenDescriptor securityTokenDescriptor = new SecurityTokenDescriptor
             {
