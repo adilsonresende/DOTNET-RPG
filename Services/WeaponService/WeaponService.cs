@@ -61,5 +61,10 @@ namespace DOTNET_RPG.Services.WeaponService
 
             return serviceResponse;
         }
+
+        public Task<ServiceResponse<CharacterDTO>> AddWeapon()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
