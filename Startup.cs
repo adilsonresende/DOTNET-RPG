@@ -1,6 +1,7 @@
 using System.Text;
 using DOTNET_RPG.Data;
 using DOTNET_RPG.Services.CharacterService;
+using DOTNET_RPG.Services.CharacterSkillService;
 using DOTNET_RPG.Services.WeaponService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -30,15 +31,16 @@ namespace DOTNET_RPG
             services.AddControllers();
             services.AddScoped<ICharacterService, CharacterService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IWeaponService,  WeaponService>();
+            services.AddScoped<IWeaponService, WeaponService>();
+            services.AddScoped<ICharacterSkillService, CharacterSkillService>();
             services.AddAutoMapper(typeof(Startup));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options => 
+            .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new  SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings").GetSection("Token").Value)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings").GetSection("Token").Value)),
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };

@@ -15,10 +15,20 @@ namespace DOTNET_RPG.Data
         public DbSet<Weapon> Weapons { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<CharacterSkill> CharacterSkills { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CharacterSkill>(x => x.HasKey(y => new { y.CharacterId, y.SkillId }));
+            modelBuilder.Entity<Character>()
+            .HasMany(character => character.skills)
+            .WithMany(skill => skill.characters)
+            .UsingEntity<CharacterSkill>(
+                characterSkill => characterSkill
+                .HasOne(s => s.skill)
+                .WithMany(),
+                characterSkill => characterSkill
+                .HasOne(c => c.character)
+                .WithMany()
+            );
         }
     }
 }
