@@ -59,6 +59,7 @@ namespace DOTNET_RPG.Services.CharacterService
             try
             {
                 serviceResponse.Data = _iMapper.Map<List<CharacterDTO>>(await _dataContext.Characters
+                .Include(x => x.weapon)
                 .AsNoTracking()
                 .Where(x => x.User.Id == GetUserId())
                 .ToListAsync());
@@ -76,7 +77,17 @@ namespace DOTNET_RPG.Services.CharacterService
             ServiceResponse<CharacterDTO> serviceResponse = new ServiceResponse<CharacterDTO>();
             try
             {
-                serviceResponse.Data = _iMapper.Map<CharacterDTO>(await _dataContext.Characters.FirstOrDefaultAsync(x => x.Id == Id && x.User.Id == GetUserId()));
+                Character character = await _dataContext.Characters
+                .Include(x => x.weapon)
+                .FirstOrDefaultAsync(x => x.Id == Id && x.User.Id == GetUserId());
+                if (character == null)
+                {
+                    serviceResponse.Success = false;
+                    serviceResponse.Message = "Character not found.";
+                    return serviceResponse;
+                }
+
+                serviceResponse.Data = _iMapper.Map<CharacterDTO>(character);
             }
             catch (Exception ex)
             {
@@ -91,7 +102,10 @@ namespace DOTNET_RPG.Services.CharacterService
             ServiceResponse<CharacterDTO> serviceResponse = new ServiceResponse<CharacterDTO>();
             try
             {
-                Character character = await _dataContext.Characters.Include(x => x.User).FirstOrDefaultAsync(x => x.Id == characterDTO.Id);
+                Character character = await _dataContext.Characters
+                .Include(x => x.User)
+                .FirstOrDefaultAsync(x => x.Id == characterDTO.Id);
+                
                 if (character.User.Id == GetUserId())
                 {
                     character.Name = characterDTO.Name;
@@ -99,7 +113,7 @@ namespace DOTNET_RPG.Services.CharacterService
                     character.Strenght = characterDTO.Strenght;
                     character.Defense = characterDTO.Defense;
                     character.Intelligence = characterDTO.Intelligence;
-                    character.RpgClass = characterDTO.RpgClass;
+                    character.RpgClass = characterDTO.rpgClass;
 
                     _dataContext.Characters.Update(character);
                     await _dataContext.SaveChangesAsync();

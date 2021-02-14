@@ -1,12 +1,13 @@
-using System;
+using Microsoft.EntityFrameworkCore;
+using DOTNET_RPG.DTOs.Character;
+using Microsoft.AspNetCore.Http;
+using DOTNET_RPG.DTOs.Weapon;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using DOTNET_RPG.Data;
-using DOTNET_RPG.DTOs.Character;
-using DOTNET_RPG.DTOs.Weapon;
 using DOTNET_RPG.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+using DOTNET_RPG.Data;
+using AutoMapper;
+using System;
 
 namespace DOTNET_RPG.Services.WeaponService
 {
@@ -14,11 +15,13 @@ namespace DOTNET_RPG.Services.WeaponService
     {
         private readonly DataContext _dataContext;
         private readonly IHttpContextAccessor _iHttpContextAccessor;
+        private readonly IMapper _iMapper;
 
-        public WeaponService(DataContext dataContext, IHttpContextAccessor iHttpContextAccessor)
+        public WeaponService(DataContext dataContext, IMapper iMapper, IHttpContextAccessor iHttpContextAccessor)
         {
+            _iMapper = iMapper;
+            _dataContext = dataContext;
             _iHttpContextAccessor = iHttpContextAccessor;
-
         }
 
         private int GetUserId()
@@ -32,7 +35,7 @@ namespace DOTNET_RPG.Services.WeaponService
             ServiceResponse<CharacterDTO> serviceResponse = new ServiceResponse<CharacterDTO>();
             try
             {
-                Character character = await _dataContext.Characters.FirstOrDefaultAsync(x =>
+                Character character = await _dataContext.Characters.Include(x => x.User).FirstOrDefaultAsync(x =>
                 x.Id == weaponDTO.CharacterId && x.User.Id == GetUserId());
 
                 if (character == null)
@@ -51,7 +54,8 @@ namespace DOTNET_RPG.Services.WeaponService
                 await _dataContext.Weapons.AddAsync(weapon);
                 await _dataContext.SaveChangesAsync();
 
-                
+                serviceResponse.Data = _iMapper.Map<CharacterDTO>(await _dataContext.Characters.FirstOrDefaultAsync(x =>
+                x.Id == weaponDTO.CharacterId));
             }
             catch (Exception ex)
             {
@@ -60,11 +64,6 @@ namespace DOTNET_RPG.Services.WeaponService
             }
 
             return serviceResponse;
-        }
-
-        public Task<ServiceResponse<CharacterDTO>> AddWeapon()
-        {
-            throw new NotImplementedException();
         }
     }
 }

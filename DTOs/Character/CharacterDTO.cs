@@ -1,10 +1,11 @@
+using DOTNET_RPG.DTOs.Weapon;
 using DOTNET_RPG.Models;
 
 namespace DOTNET_RPG.DTOs.Character
 {
     public class CharacterDTO
     {
-         public int Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
@@ -16,6 +17,8 @@ namespace DOTNET_RPG.DTOs.Character
 
         public int Intelligence { get; set; }
 
-        public RpgClass RpgClass { get; set; }
+        public RpgClass rpgClass { get; set; }
+
+        public WeaponDTO weaponDTO { get; set; }
     }
 }
