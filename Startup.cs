@@ -1,17 +1,19 @@
-using System.Text;
-using DOTNET_RPG.Data;
-using DOTNET_RPG.Services.CharacterService;
-using DOTNET_RPG.Services.CharacterSkillService;
-using DOTNET_RPG.Services.WeaponService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using DOTNET_RPG.Services.CharacterSkillService;
+using Microsoft.Extensions.DependencyInjection;
+using DOTNET_RPG.Services.CharacterService;
+using Microsoft.Extensions.Configuration;
+using DOTNET_RPG.Services.WeaponService;
+using DOTNET_RPG.Services.FightService;
+using DOTNET_RPG.Services.AuthService;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Http;
+using DOTNET_RPG.Data;
+using System.Text;
 
 namespace DOTNET_RPG
 {
@@ -33,6 +35,7 @@ namespace DOTNET_RPG
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IWeaponService, WeaponService>();
             services.AddScoped<ICharacterSkillService, CharacterSkillService>();
+            services.AddScoped<IFightService, FightService>();
             services.AddAutoMapper(typeof(Startup));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>

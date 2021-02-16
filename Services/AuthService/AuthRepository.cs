@@ -1,15 +1,17 @@
 using Microsoft.Extensions.Configuration;
+using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using DOTNET_RPG.Utility;
 using DOTNET_RPG.Models;
+using DOTNET_RPG.Data;
 using System.Text;
 using System;
-using System.IdentityModel.Tokens.Jwt;
 
-namespace DOTNET_RPG.Data
+namespace DOTNET_RPG.Services.AuthService
 {
     public class AuthRepository : IAuthRepository
     {
@@ -63,7 +65,7 @@ namespace DOTNET_RPG.Data
                     return serviceResponse;
                 }
 
-                CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
+                PasswordHashHelper.CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
 
@@ -78,15 +80,6 @@ namespace DOTNET_RPG.Data
                 serviceResponse.Message = ex.Message;
             }
             return serviceResponse;
-        }
-
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmacsha = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmacsha.Key;
-                passwordHash = hmacsha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
         }
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passowordSalt)
@@ -120,7 +113,8 @@ namespace DOTNET_RPG.Data
             List<Claim> claim = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             SymmetricSecurityKey systemSecurityKey = new SymmetricSecurityKey(

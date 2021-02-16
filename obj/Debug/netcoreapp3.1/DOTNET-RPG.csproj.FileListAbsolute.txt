@@ -1,6 +1,5 @@
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\appsettings.json
-D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\DOTNET-RPG.exe
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\DOTNET-RPG.deps.json
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\DOTNET-RPG.runtimeconfig.json
@@ -64,3 +63,4 @@ D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Sec
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\Humanizer.dll
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 D:\DOTNET-RPG\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\DOTNET-RPG\obj\Debug\netcoreapp3.1\scopedcss\bundle\DOTNET-RPG.styles.css

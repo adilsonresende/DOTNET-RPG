@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using DOTNET_RPG.Models;
 
-namespace DOTNET_RPG.Data
+namespace DOTNET_RPG.Services.AuthService
 {
     public interface IAuthRepository
     {

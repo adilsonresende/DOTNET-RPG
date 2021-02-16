@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Eh+bISnUuyZF1z0xUFgPVtRSHsr60pojXjukzLuPXdODXVljumgThrIcP02O3KDwX51guGsjXw8b7Iy+eTIFtQ==",
+  "dgSpecHash": "djos96iHkL10WOt53LMZZPUum8LXzi5P2iXdE//HJ1/r+s+pp9TbcnrEgEcqAdfMQJHTZSZcaz3CZLnae7EmFA==",
   "success": true,
   "projectFilePath": "D:\\DOTNET-RPG\\DOTNET-RPG.csproj",
   "expectedPackageFiles": [
@@ -102,7 +102,9 @@
     "C:\\Users\\Adilson\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Adilson\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Adilson\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Adilson\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\Adilson\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\Adilson\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.8\\microsoft.aspnetcore.app.ref.3.1.8.nupkg.sha512",
+    "C:\\Users\\Adilson\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.9\\microsoft.netcore.app.host.win-x64.3.1.9.nupkg.sha512"
   ],
   "logs": []
 }

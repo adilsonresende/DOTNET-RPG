@@ -2,7 +2,7 @@
 
 namespace DOTNET_RPG.Migrations
 {
-    public partial class UserCharactersRelation : Migration
+    public partial class AddedUserCharactersRelation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

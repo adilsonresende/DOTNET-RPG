@@ -29,6 +29,9 @@ namespace DOTNET_RPG.Data
                 .HasOne(c => c.character)
                 .WithMany()
             );
+
+            modelBuilder.Entity<User>()
+            .Property(x => x.Role).HasDefaultValue("Player");
         }
     }
 }

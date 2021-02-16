@@ -1,15 +1,13 @@
-using System;
-using System.Linq;
+using DOTNET_RPG.DTOs.CharacterSkillDTO;
+using Microsoft.EntityFrameworkCore;
+using DOTNET_RPG.DTOs.Character;
+using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using AutoMapper;
-using DOTNET_RPG.Data;
-using DOTNET_RPG.DTOs.Character;
-using DOTNET_RPG.DTOs.CharacterSkillDTO;
-using DOTNET_RPG.DTOs.Skill;
 using DOTNET_RPG.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+using DOTNET_RPG.Data;
+using AutoMapper;
+using System;
 
 namespace DOTNET_RPG.Services.CharacterSkillService
 {

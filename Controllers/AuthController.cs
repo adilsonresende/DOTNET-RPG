@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using DOTNET_RPG.DTOs.User;
 using DOTNET_RPG.Models;
 using DOTNET_RPG.Data;
+using DOTNET_RPG.Services.AuthService;
 
 namespace DOTNET_RPG.Controllers
 {

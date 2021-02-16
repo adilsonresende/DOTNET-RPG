@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using DOTNET_RPG.DTOs.Character;
 using System.Threading.Tasks;
+using System.Security.Claims;
 using DOTNET_RPG.Models;
 using DOTNET_RPG.Data;
 using System.Linq;
 using AutoMapper;
 using System;
-using System.Security.Claims;
 
 namespace DOTNET_RPG.Services.CharacterService
 {
@@ -22,6 +22,11 @@ namespace DOTNET_RPG.Services.CharacterService
         {
             Int32.TryParse(_iHttpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier), out int user_id);
             return user_id;
+        }
+
+        private string GetUserRole()
+        {
+            return _iHttpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
         }
 
 
@@ -58,11 +63,19 @@ namespace DOTNET_RPG.Services.CharacterService
             ServiceResponse<List<CharacterDTO>> serviceResponse = new ServiceResponse<List<CharacterDTO>>();
             try
             {
-                serviceResponse.Data = _iMapper.Map<List<CharacterDTO>>(await _dataContext.Characters
+                List<Character> characters = GetUserRole() == "Admin" ?
+                await _dataContext.Characters
+                .Include(x => x.weapon)
+                .AsNoTracking()
+                .ToListAsync()
+                : 
+                await _dataContext.Characters
                 .Include(x => x.weapon)
                 .AsNoTracking()
                 .Where(x => x.User.Id == GetUserId())
-                .ToListAsync());
+                .ToListAsync();
+
+                serviceResponse.Data = _iMapper.Map<List<CharacterDTO>>(characters);
             }
             catch (Exception ex)
             {
@@ -105,7 +118,7 @@ namespace DOTNET_RPG.Services.CharacterService
                 Character character = await _dataContext.Characters
                 .Include(x => x.User)
                 .FirstOrDefaultAsync(x => x.Id == characterDTO.Id);
-                
+
                 if (character.User.Id == GetUserId())
                 {
                     character.Name = characterDTO.Name;

@@ -11,7 +11,7 @@ namespace DOTNET_RPG.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20210207124938_User")]
-    partial class User
+    partial class AddedUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

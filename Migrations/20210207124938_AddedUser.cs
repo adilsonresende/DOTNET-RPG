@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DOTNET_RPG.Migrations
 {
-    public partial class User : Migration
+    public partial class AddedUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

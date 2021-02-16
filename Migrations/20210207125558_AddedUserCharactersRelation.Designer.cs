@@ -11,7 +11,7 @@ namespace DOTNET_RPG.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20210207125558_UserCharactersRelation")]
-    partial class UserCharactersRelation
+    partial class AddedUserCharactersRelation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
