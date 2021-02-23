@@ -65,17 +65,21 @@ namespace DOTNET_RPG.Services.CharacterService
             {
                 List<Character> characters = GetUserRole() == "Admin" ?
                 await _dataContext.Characters
+                .Include(x => x.skills)
                 .Include(x => x.weapon)
                 .AsNoTracking()
                 .ToListAsync()
                 : 
                 await _dataContext.Characters
+                .Include(x => x.skills)
                 .Include(x => x.weapon)
-                .AsNoTracking()
                 .Where(x => x.User.Id == GetUserId())
                 .ToListAsync();
 
                 serviceResponse.Data = _iMapper.Map<List<CharacterDTO>>(characters);
+                if(characters.Count() == 0) {
+                    serviceResponse.Message = "No characters found.";
+                }
             }
             catch (Exception ex)
             {
@@ -119,7 +123,7 @@ namespace DOTNET_RPG.Services.CharacterService
                 .Include(x => x.User)
                 .FirstOrDefaultAsync(x => x.Id == characterDTO.Id);
 
-                if (character.User.Id == GetUserId())
+                if (character != null && character.User.Id == GetUserId())
                 {
                     character.Name = characterDTO.Name;
                     character.HitPoints = characterDTO.HitPoints;

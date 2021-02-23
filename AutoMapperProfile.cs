@@ -11,7 +11,9 @@ namespace DOTNET_RPG
     {
         public AutoMapperProfile()
         {
-            CreateMap<Character, CharacterDTO>();
+            CreateMap<Character, CharacterDTO>()
+                .ForMember(dest => dest.skillDTOs, src => src.MapFrom(x => x.skills))
+                .ForMember(dest => dest.weaponDTO, src => src.MapFrom(x => x.weapon));
             CreateMap<CharacterDTO, Character>();
             CreateMap<Weapon, WeaponDTO>();
             CreateMap<WeaponDTO, Weapon>();

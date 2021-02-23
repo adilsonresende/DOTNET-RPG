@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DOTNET-RPG\\DOTNET-RPG.csproj": {}
+    "C:\\Desenvolvimento\\DOTNET-RPG\\DOTNET-RPG.csproj": {}
   },
   "projects": {
-    "D:\\DOTNET-RPG\\DOTNET-RPG.csproj": {
+    "C:\\Desenvolvimento\\DOTNET-RPG\\DOTNET-RPG.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DOTNET-RPG\\DOTNET-RPG.csproj",
+        "projectUniqueName": "C:\\Desenvolvimento\\DOTNET-RPG\\DOTNET-RPG.csproj",
         "projectName": "DOTNET-RPG",
-        "projectPath": "D:\\DOTNET-RPG\\DOTNET-RPG.csproj",
-        "packagesPath": "C:\\Users\\Adilson\\.nuget\\packages\\",
-        "outputPath": "D:\\DOTNET-RPG\\obj\\",
+        "projectPath": "C:\\Desenvolvimento\\DOTNET-RPG\\DOTNET-RPG.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Desenvolvimento\\DOTNET-RPG\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Adilson\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,16 +78,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.8, 3.1.8]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.9, 3.1.9]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -96,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
